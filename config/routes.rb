@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   get 'directions/new', to: 'directions#new'
   post '/directions', to: 'directions#create', as: 'create_direction'
   get '/result/:start_location/:end_location/:waypoint', to: 'directions#result', as: 'result'
