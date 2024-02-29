@@ -1,0 +1,39 @@
+<h1>siori</h1>
+<h3>siori詳細</h3>
+<div class="tweetshow">
+    <h4>｜メインタイトル</h4>
+        <p><%= @tweet.title %></p>
+    <h4>｜メイン概要</h4>
+        <p style="word-wrap: break-word;"><%= @tweet.detail %></p><br>
+
+<div class="kuwasiku">
+    <div class="kuwasiku-hidari">
+        <% @tweet.tweet_ingredients.each do |f| %>
+                <h5>✎タイトル</h5>
+                <p><%= f.title %></p>
+                <h5>✎詳細</h5>
+                <p><%= f.detail %></p>
+                <h5>✎場所</h5>
+                <p><%= f.address %></p>
+                <h5>✎日時</h5>
+                <p><%= f.date_time %></p>
+                <h5>✎所要時間</h5>
+                <p><%= f.need_time %></p>
+                <h5>✎交通手段</h5>
+                <p><%= f.transportation %></p>
+                </div>
+                <div class="kuwasiku-migi">
+                <h5>✎イメージ</h5>
+                <%= image_tag f.image_url, size: "80%" if f.image? %>
+                
+        <% end %>
+</div>
+</div>
+<div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="http://localhost:3000/tweets/<%=@tweet.id%>" data-color="default" data-size="small" data-count="false" data-ver="3" style="display: none;"></div>
+<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+
+<%= link_to "siori一覧に戻る", tweets_path %>
+
+<%= link_to edit_tweet_path(@tweet.id) do %>
+    <i class="fa-solid fa-pen"></i>
+<%end%>

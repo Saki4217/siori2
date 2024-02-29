@@ -1,0 +1,44 @@
+<h2>ホーム</h2>
+<div class="slidebox">
+    <%= image_tag "index1.jpg",class:"sentotihiro"%>
+    <%= image_tag "index2.jpg",class:"sentotihiro"%>
+    <%= image_tag "index3.jpeg",class:"sentotihiro"%>
+    <%= image_tag "index4.jpg",class:"sentotihiro"%>
+    <%= image_tag "index5.jpg",class:"sentotihiro"%>
+</div>
+
+<h3>sioriとは</h3>
+    <div class="sioritoha">
+        <%= image_tag "siori.jpg",class:"kamihikouki"%>
+        <p>推し活の一つとも言える、「聖地巡礼」</p>
+        <p>日本のアニメ作品の細密な背景画のモデルとなった場所や建物を訪問する
+        ファン行為、「聖地巡礼」に綿密な事前準備は欠かせないだろう</p>
+        <p>このsioriは、そんなあなたの御供をしてくれるはず＿＿＿＿</p>
+            </div>
+
+<h3>siori一覧</h3>
+    <div class="tweeteach">
+        <% @tweets.each do |t| %>
+            <div class="tweet">
+                <% if t.image? %>
+                    <%= link_to tweet_path(t.id), method: :get do %>
+                        <%= image_tag t.image_url, class:"tweetimage" %>
+                    <%end%>
+                <%else%>
+                    <%= link_to tweet_path(t.id), method: :get do %>
+                        <%= image_tag "noimage.jpg", class:"tweetimage" %>
+                    <%end%>
+                <%end%>
+                <br>
+            <%= t.title %>
+            <% if user_signed_in? && current_user.id == t.user_id %>
+                <%= link_to  edit_tweet_path(t.id) do %>
+                    <i class="fa-solid fa-pen"></i>
+                <%end%>
+                <%= link_to tweet_path(t.id), method: :delete do %>
+                    <i class="fa-solid fa-trash"></i>
+                <%end%>
+            <% end %> 
+            </div>
+        <% end %>
+    </div>

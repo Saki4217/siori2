@@ -1,0 +1,101 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ * {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Slackside One', cursive;
+font-family: 'Zen Kaku Gothic Antique', sans-serif;
+font-family: 'Zen Kurenaido', sans-serif;
+    background-image: url("background.jpeg");
+    background-size: cover;
+}
+header {
+    background-color: #ecddb7e7;
+    height: 80px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  transition: transform 0.3s 0.3s;
+}
+header.hidden {
+    transform: translateY(-80px);
+}
+main{
+  padding-top: 80px;
+}
+/* 通常時はホバー時の文字を非表示にする */
+h1 .hover{
+    display: none;
+    }
+    
+    /* ホバー時は通常時の文字を非表示にする */
+    h1:hover .nomal{
+    display: none;
+    }
+    
+    /* ホバー時に、ホバー時の文字を表示する */
+    h1:hover .hover{
+    display: inline;
+    color: #c55a0ef5;
+    }
+header a {
+    color: black; 
+    text-decoration: none; 
+    font-family: 'Slackside One', cursive;
+font-family: 'Zen Kaku Gothic Antique', sans-serif;
+font-family: 'Zen Kurenaido', sans-serif;
+}
+header a:hover {
+	color: #c55a0ef5;
+}
+header h1 {
+    color: black;
+    margin-left: 20px;
+}
+.header-list {
+    display: flex;
+    align-items: center;
+}
+.header-list:hover {
+	color: #c55a0e;
+}
+header ul {
+    display: flex;
+    text-decoration: none;
+}
+header li {
+    list-style: none;
+    margin-right: 40px;
+    padding: auto;
+}
+footer {
+    color: white;
+    height: 30px;
+    background-color: #000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 30px;
+}

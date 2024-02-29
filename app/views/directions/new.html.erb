@@ -1,0 +1,91 @@
+<div class="form_wrapper">
+  <%= form_with(url: create_direction_path, method: :post, html: { class: "form_body" }) do |form| %>
+      <button type="button" class="cp_button02" onclick="addWaypoint()">経由地<br>追加</button>
+      <button type="button" class="cp_button02 m-l25" onclick="removeWaypoint()">経由地<br>削除</button><br>
+
+    <div class="cp_iptxt">
+      <label>出発地</label>
+      <%= form.text_field :start_location, id: "start_location", class: "ef", type: "text", placeholder: "", autocomplete: 'off' %>
+      <span class="focus_line"></span>
+    </div>
+
+    <div class="cp_iptxt">
+      <label>目的地</label>
+      <%= form.text_field :end_location, id: "end_location", class: "ef", type: "text", placeholder: "", autocomplete: 'off' %>
+      <span class="focus_line"></span>
+    </div>
+
+    <div id="waypoints-container">
+        <div class="cp_iptxt">
+          <label>経由地</label>
+          <%= form.text_field :waypoint1, id: "waypoint1", class: "ef", type: "text", placeholder: "", autocomplete: 'off' %>
+          <span class="focus_line"></span>
+        </div>
+        <div class="cp_iptxt">
+          <label>経由地</label>
+          <%= form.text_field :waypoint2, id: "waypoint2", class: "ef", type: "text", placeholder: "", autocomplete: 'off' %>
+          <span class="focus_line"></span>
+        </div>
+        <div class="cp_iptxt">
+          <label>経由地</label>
+          <%= form.text_field :waypoint3, id: "waypoint3", class: "ef", type: "text", placeholder: "", autocomplete: 'off' %>
+          <span class="focus_line"></span>
+        </div>
+    </div>
+
+    <div class="button_wrapper">
+      <%= button_tag type: "submit", class: "cp_button01" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>検索する
+      <%end%>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  // 経由地制御
+  // 経由地は最大８つまで可能
+  // 現在はデフォルト表示３つ、最大４つまで
+  let waypointCount = 3;
+  const maxWaypoints = 4;
+
+  function addWaypoint() {
+    if (waypointCount < maxWaypoints) {
+      waypointCount++;
+
+      const waypointContainer = document.createElement('div');
+      waypointContainer.className = "cp_iptxt";
+
+      const waypointInput = document.createElement('input');
+      waypointInput.type = "text";
+      waypointInput.id = `waypoint${waypointCount}`;
+      waypointInput.className = "ef";
+      waypointInput.setAttribute('placeholder', "");
+      waypointInput.setAttribute('autocomplete', 'off');
+              waypointInput.name = `waypoint${waypointCount}`;
+
+      const waypointLabel = document.createElement('label');
+      waypointLabel.textContent = "経由地";
+
+      const focusLine = document.createElement('span');
+      focusLine.className = "focus_line";
+
+      waypointContainer.appendChild(waypointInput);
+      waypointContainer.appendChild(waypointLabel);
+      waypointContainer.appendChild(focusLine);
+
+      document.getElementById('waypoints-container').appendChild(waypointContainer);
+    } else {
+      alert("経由地は最大で4つまでです。");
+    }
+  }
+
+  function removeWaypoint() {
+      if (waypointCount > 0) {
+          const waypointToRemove = document.getElementById(`waypoint${waypointCount}`).parentNode;
+          waypointToRemove.parentNode.removeChild(waypointToRemove);
+          waypointCount--;
+      } else {
+          alert("これ以上消せません");
+      }
+  }
+</script>

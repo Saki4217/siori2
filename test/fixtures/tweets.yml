@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  detail: MyText
+  image: MyString
+  address: MyText
+  date_time: 2023-12-09 18:09:37
+  need_time: 2023-12-09 18:09:37
+  transportation: MyText
+
+two:
+  title: MyString
+  detail: MyText
+  image: MyString
+  address: MyText
+  date_time: 2023-12-09 18:09:37
+  need_time: 2023-12-09 18:09:37
+  transportation: MyText

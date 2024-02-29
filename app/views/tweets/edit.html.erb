@@ -1,0 +1,36 @@
+<h3>sioriを編集する</h3>
+    <%= form_for @tweet do |f| %>
+    <div class="field">
+    <%= f.label :メインタイトル %>
+    <%= f.text_field :title, :size => 140 %><br>
+    <%= f.label :メイン概要 %>
+    <%= f.text_field :detail, :size => 140 %><br>
+    <%= f.label :image, "メインイメージ" %>
+    <%= f.file_field :image %><br>
+
+    <div class="recipe-ingredients">
+        <div class="mx-auto">
+        <%= f.fields_for :tweet_ingredients do |t| %>
+        <%= render "tweets/tweet_ingredient_fields", f: t %>
+        <% end %>
+        </div>
+
+    <div class="field">
+        <div id="detail-association-insertion-point"></div>
+    </div>
+
+    <div class="col-10 mx-auto mt-2">
+        <%= link_to_add_association "+フォームを追加", f, :tweet_ingredients,
+        class: "btn btn-secondary btn-block",
+        data: {
+        association_insertion_node: '#detail-association-insertion-point',
+        association_insertion_method: 'after'
+        }%>
+    </div>
+    </div>
+
+<%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %>
+    <i class="fa-solid fa-pen"></i>編集する
+<% end %>
+
+<% end %>

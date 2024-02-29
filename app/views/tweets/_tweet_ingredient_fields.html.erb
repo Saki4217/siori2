@@ -1,0 +1,23 @@
+<div class="nested-fields">
+    <div class="row mx-auto">
+        <%= f.label :タイトル %>
+    <%= f.text_field :title, :size => 140, class: "form-control" %><br>
+    <%= f.label :概要 %>
+    <%= f.text_field :detail, :size => 140, class: "form-control" %><br>
+    <%= f.label :画像 %>
+    <%= f.file_field :image, :size => 140, class: "form-control" %><br>
+
+    <%= f.label :場所 %>
+    <%= f.text_field :address, :size => 140, class: "form-control" %><br>
+    <%= f.label :日時 %>
+    <%= f.text_field :date_time, :size => 140, class: "form-control" %><br>
+    <%= f.label :所要時間 %>
+    <%= f.text_field :need_time, :size => 140, class: "form-control" %><br>
+    <%= f.label :移動手段 %>
+    <%= f.select :transportation,[["徒歩", "徒歩"], ["バス", "バス"], ["電車", "電車"]], {include_blank: "選択して下さい" }, class: "form-control" %><br>
+
+    <%= link_to_remove_association f, class: "btn btn-secondary btn-block" do %>
+        <i class="fa-solid fa-trash"></i>
+    <%end%>
+    </div>
+</div>

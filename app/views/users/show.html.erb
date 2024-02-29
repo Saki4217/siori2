@@ -1,0 +1,43 @@
+<h2>マイページ</h2>
+
+<h3>プロフィール</h3>
+    <p>名前 : <%= @user.name %></p>
+    <p>メールアドレス : <%= @user.email %></p>
+    <p>プロフィール : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+<%= link_to edit_user_registration_path do %>
+    <i class="fa-solid fa-pen"></i>
+<%end%>
+<% end %>
+
+<h3>ユーザーの投稿一覧</h3>
+<div class="tweeteach">
+        <% @user.tweets.each do |t| %>
+            <div class="tweet">
+                <% if t.image? %>
+                    <%= link_to tweet_path(t.id), method: :get do %>
+                        <%= image_tag t.image_url, class:"tweetimage" %>
+                    <%end%>
+                <%else%>
+                    <%= link_to tweet_path(t.id), method: :get do %>
+                        <%= image_tag "noimage.jpg", class:"tweetimage" %>
+                    <%end%>
+                <%end%>
+                <br>
+            <%= t.title %>
+            <% if user_signed_in? && current_user.id == t.user_id %>
+                <%= link_to edit_tweet_path(t.id) do %>
+                    <i class="fa-solid fa-pen"></i>
+                <%end%>
+                <%= link_to tweet_path(t.id), method: :delete do %>
+                    <i class="fa-solid fa-trash"></i>
+                <%end%>
+            <% end %> 
+            </div>
+        <% end %>
+    </div>
+
+<%= link_to "siori一覧に戻る", tweets_path %>
+
+<%= image_tag @user.image_url, size: "250x200" if @user.image? %>
