@@ -3,12 +3,12 @@
 <h3>sioriを作成する</h3>
     <%= form_for @tweet do |f| %>
     <div class="field">
-    <%= f.label :メインタイトル %>
-    <%= f.text_field :title, :size => 140 %><br>
-    <%= f.label :メイン概要 %>
-    <%= f.text_field :detail, :size => 140 %><br>
-    <%= f.label :image, "メインイメージ" %>
-    <%= f.file_field :image %>
+        <%= f.label :メインタイトル %>
+        <%= f.text_field :title, :size => 140 %><br>
+        <%= f.label :メイン概要 %>
+        <%= f.text_field :detail, :size => 140 %><br>
+        <%= f.label :image, "メインイメージ" %>
+        <%= f.file_field :image %>
 
     <div class="recipe-ingredients">
     <div class="mx-auto">
